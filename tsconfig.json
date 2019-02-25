@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictBindCallApply": false,
+    "removeComments": false,
+    "newLine": "LF",
+    "pretty": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "declaration": true,
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "lib": [
+      "esnext"
+    ],
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

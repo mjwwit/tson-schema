@@ -1,0 +1,31 @@
+{
+  "name": "tson-schema",
+  "version": "0.0.1",
+  "description": "A TypeScript API to create JSON-Schemas and TypeScript types",
+  "files": ["dist"],
+  "main": "dist/ts-json-schema.js",
+  "types": "dist/ts-json-schema.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "postlint": "yarn audit",
+    "dev": "nodemon -e ts --watch src --watch test --exec 'ts-node -P test/tsconfig.json $(yarn bin)/tape test/**/*.spec.ts | tap-spec'",
+    "pretest": "yarn lint && tslint -p test/tsconfig.json",
+    "test": "ts-node -P test/tsconfig.json $(yarn bin)/tape test/**/*.spec.ts | tap-spec"
+  },
+  "author": "Michael de Wit <mjwwit@gmail.com>",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/tape": "^4.2.33",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.16.4",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.2",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.3.1"
+  }
+}
