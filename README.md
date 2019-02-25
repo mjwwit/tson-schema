@@ -13,19 +13,19 @@ __This is a work in progress! Known missing json-schema features include:__
 ## Installing
 
 ```
-npm install -S ts-json-schema
+npm install -S tson-schema
 ```
 
 Or
 
 ```
-yarn add ts-json-schema
+yarn add tson-schema
 ```
 
 ## Usage
 
 ```ts
-import * as s from 'ts-json-schema'
+import * as s from 'tson-schema'
 
 /**
  * Array

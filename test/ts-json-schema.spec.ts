@@ -1,5 +1,5 @@
 import test from 'tape'
-import * as s from '../src/ts-json-schema'
+import * as s from '../src/tson-schema'
 
 test('Null type schema', (t) => {
   const nullSchema = s.Null()

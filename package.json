@@ -1,10 +1,12 @@
 {
   "name": "tson-schema",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A TypeScript API to create JSON-Schemas and TypeScript types",
-  "files": ["dist"],
-  "main": "dist/ts-json-schema.js",
-  "types": "dist/ts-json-schema.d.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/tson-schema.js",
+  "types": "dist/tson-schema.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "tslint -p tsconfig.json",
