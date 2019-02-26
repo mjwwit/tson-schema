@@ -28,7 +28,6 @@ function arrayType<T>(schema: ListSchemaDefinition<T> = {}): TypedSchema<T[]> {
   }
 }
 
-// TODO: Add support for `additionalItems`
 export interface Tuple1SchemaDefinition<T1> extends BaseArrayDefinition {
   items: [TypedSchema<T1>]
   // additionalItems?: boolean | TypedSchema<V>

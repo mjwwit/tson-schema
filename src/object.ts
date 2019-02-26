@@ -1,7 +1,5 @@
 import { JSONSchema, TypedSchema } from './common'
 
-// TODO: Somehow make `properties` and `required` optional
-// TODO: Add support for `additionalProperties`
 export interface ObjectDefinition<T extends {}> {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: (keyof T)[]
