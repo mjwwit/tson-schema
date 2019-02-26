@@ -1,16 +1,18 @@
-import { JSONSchema, TypedSchema } from './common'
+import { BaseSchemaDefinition, JSONSchema, TypedSchema } from './common'
 
-export interface ObjectDefinition<T extends {}> {
+export interface ObjectDefinition<T extends {}> extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: (keyof T)[]
 }
 
-export interface PartialObjectDefinition<T extends {}> {
+export interface PartialObjectDefinition<T extends {}>
+  extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: []
 }
 
-export interface ObjectDefinition1<T extends {}, R1 extends keyof T> {
+export interface ObjectDefinition1<T extends {}, R1 extends keyof T>
+  extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: [R1]
 }
@@ -18,7 +20,7 @@ export interface ObjectDefinition2<
   T extends {},
   R1 extends keyof T,
   R2 extends keyof T
-> {
+> extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: [R1, R2]
 }
@@ -27,7 +29,7 @@ export interface ObjectDefinition3<
   R1 extends keyof T,
   R2 extends keyof T,
   R3 extends keyof T
-> {
+> extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: [R1, R2, R3]
 }
@@ -37,7 +39,7 @@ export interface ObjectDefinition4<
   R2 extends keyof T,
   R3 extends keyof T,
   R4 extends keyof T
-> {
+> extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: [R1, R2, R3, R4]
 }
@@ -48,7 +50,7 @@ export interface ObjectDefinition5<
   R3 extends keyof T,
   R4 extends keyof T,
   R5 extends keyof T
-> {
+> extends BaseSchemaDefinition {
   properties: { [Key in keyof T]: TypedSchema<T[Key]> }
   required: [R1, R2, R3, R4, R5]
 }

@@ -7,5 +7,14 @@ test('Boolean type schema', (t) => {
 
   const x: typeof booleanSchema.type = false
 
+  const booleanWithDefault = s.boolean({
+    default: true,
+  })
+
+  t.deepEquals(booleanWithDefault.getSchema(), {
+    type: 'boolean',
+    default: true,
+  })
+
   t.end()
 })

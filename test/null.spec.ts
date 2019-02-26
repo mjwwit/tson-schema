@@ -7,5 +7,14 @@ test('Null type schema', (t) => {
 
   const x: typeof nullSchema.type = null
 
+  const nullWithDescriptionSchema = s.null({
+    description: 'Some lost null value',
+  })
+
+  t.deepEquals(nullWithDescriptionSchema.getSchema(), {
+    type: 'null',
+    description: 'Some lost null value',
+  })
+
   t.end()
 })

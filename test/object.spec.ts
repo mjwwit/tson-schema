@@ -35,9 +35,20 @@ test('Object type schema', (t) => {
   const y2: typeof partialObjectSchema.type = {}
 
   const complexObjectSchema = s.object({
+    title: 'Complex Object',
     properties: {
       req: s.string(),
       opt: s.tuple({ items: [s.integer()] }),
+    },
+    required: ['req'],
+  })
+
+  t.deepEquals(complexObjectSchema.getSchema(), {
+    type: 'object',
+    title: 'Complex Object',
+    properties: {
+      req: { type: 'string' },
+      opt: { type: 'array', items: [{ type: 'integer' }] },
     },
     required: ['req'],
   })

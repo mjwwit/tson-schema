@@ -1,6 +1,6 @@
-import { defineType, JSONSchema } from './common'
+import { BaseSchemaDefinition, defineType } from './common'
 
-export interface NumberSchemaDefinition {
+export interface NumberSchemaDefinition extends BaseSchemaDefinition {
   minimum?: number
   maximum?: number
   exclusiveMinimum?: boolean
@@ -8,16 +8,7 @@ export interface NumberSchemaDefinition {
   multipleOf?: number
 }
 
-export interface NumberSchema extends JSONSchema, NumberSchemaDefinition {
-  type: 'number'
-}
-
 const numberType = defineType<NumberSchemaDefinition, number>('number', 0)
-
-export interface IntegerSchema extends JSONSchema, NumberSchemaDefinition {
-  type: 'integer'
-}
-
 const integerType = defineType<NumberSchemaDefinition, number>('integer', 0)
 
 export { integerType as integer, numberType as number }

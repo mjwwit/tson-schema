@@ -7,5 +7,14 @@ test('String type schema', (t) => {
 
   const x: typeof stringSchema.type = 'hello world'
 
+  const stringWithCommentSchema = s.string({
+    $comment: 'Just a string',
+  })
+
+  t.deepEquals(stringWithCommentSchema.getSchema(), {
+    type: 'string',
+    $comment: 'Just a string',
+  })
+
   t.end()
 })

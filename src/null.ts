@@ -1,9 +1,5 @@
-import { defineType, JSONSchema } from './common'
+import { BaseSchemaDefinition, defineType } from './common'
 
-export interface NullSchema extends JSONSchema {
-  type: 'null'
-}
-
-const nullType = defineType<never, null>('null', null)
+const nullType = defineType<BaseSchemaDefinition, null>('null', null)
 
 export { nullType as null }

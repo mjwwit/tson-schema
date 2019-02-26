@@ -7,6 +7,15 @@ test('Number type schema', (t) => {
 
   const x: typeof numberSchema.type = 5
 
+  const numberWithExamplesSchema = s.number({
+    examples: [-1, 2, 3.5],
+  })
+
+  t.deepEquals(numberWithExamplesSchema.getSchema(), {
+    type: 'number',
+    examples: [-1, 2, 3.5],
+  })
+
   t.end()
 })
 
@@ -15,6 +24,15 @@ test('Integer type schema', (t) => {
   t.deepEquals(integerSchema.getSchema(), { type: 'integer' })
 
   const x: typeof integerSchema.type = 5
+
+  const integerWithTitleSchema = s.integer({
+    title: 'Da Int',
+  })
+
+  t.deepEquals(integerWithTitleSchema.getSchema(), {
+    type: 'integer',
+    title: 'Da Int',
+  })
 
   t.end()
 })

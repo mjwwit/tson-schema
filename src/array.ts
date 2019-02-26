@@ -1,6 +1,6 @@
-import { TypedSchema } from './common'
+import { BaseSchemaDefinition, TypedSchema } from './common'
 
-interface BaseArrayDefinition {
+interface BaseArrayDefinition extends BaseSchemaDefinition {
   minItems?: number
   maxItems?: number
   uniqueItems?: boolean

@@ -7,7 +7,34 @@ export interface JSONSchema {
   type: string
 }
 
-export function defineType<SchemaDefinition extends object, ValueType>(
+export interface BaseSchemaDefinition {
+  /**
+   * Schema title
+   */
+  title?: string
+  /**
+   * Schema description
+   */
+  description?: string
+  /**
+   * A comment to be added to the schema
+   */
+  $comment?: string
+  /**
+   * Default value to be assigned when no value is given in
+   * the document
+   */
+  default?: any
+  /**
+   * A list of example values that match this schema
+   */
+  examples?: any[]
+}
+
+export function defineType<
+  SchemaDefinition extends BaseSchemaDefinition,
+  ValueType
+>(
   type: string,
   value: ValueType
 ): (schema?: SchemaDefinition) => TypedSchema<ValueType> {

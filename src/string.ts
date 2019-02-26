@@ -1,4 +1,4 @@
-import { defineType, JSONSchema } from './common'
+import { BaseSchemaDefinition, defineType, JSONSchema } from './common'
 
 export type JSONSchemaStringFormat =
   | 'date-time'
@@ -10,15 +10,11 @@ export type JSONSchemaStringFormat =
   | 'uri-reference'
   | 'json-pointer'
   | 'uri-template'
-export interface StringSchemaDefinition {
+export interface StringSchemaDefinition extends BaseSchemaDefinition {
   minLength?: number
   maxLength?: number
   pattern?: string
   format?: JSONSchemaStringFormat
-}
-
-export interface StringSchema extends JSONSchema, StringSchemaDefinition {
-  type: 'string'
 }
 
 const stringType = defineType<StringSchemaDefinition, string>('string', '')
