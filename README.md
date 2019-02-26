@@ -8,6 +8,7 @@ __This is a work in progress! Known missing json-schema features include:__
 - `array.additionalItems`
 - `object.additionalProperties`
 - `$ref`
+- JSON-Schema conditional schemas (`if`/`else`)
 - Limited TypeScript support for big tuples and objects with lots of required properties
 
 ## Installing
@@ -25,13 +26,13 @@ yarn add tson-schema
 ## Usage
 
 ```ts
-import * as s from 'tson-schema'
+import * as t from 'tson-schema'
 
 /**
  * Array
  */
-const numberArraySchema = s.Array({
-  items: s.Number({
+const numberArraySchema = t.array({
+  items: t.number({
     minimum: 1
   }),
   minItems: 2,
@@ -44,11 +45,11 @@ numberArraySchema.type        // number[]
 /**
  * Object
  */
-const objectSchema = s.Obj({
+const objectSchema = t.object({
   properties: {
-    req: s.String(),
-    opt: s.Tuple({
-      items: [s.Integer()]
+    req: t.string(),
+    opt: t.tuple({
+      items: [t.integer()]
     })
   },
   required: ['req']

@@ -2,7 +2,7 @@ import test from 'tape'
 import * as s from '../src/tson-schema'
 
 test('Null type schema', (t) => {
-  const nullSchema = s.Null()
+  const nullSchema = s.null()
   t.deepEquals(nullSchema.getSchema(), { type: 'null' })
 
   const x: typeof nullSchema.type = null
@@ -11,7 +11,7 @@ test('Null type schema', (t) => {
 })
 
 test('Number type schema', (t) => {
-  const numberSchema = s.Number()
+  const numberSchema = s.number()
   t.deepEquals(numberSchema.getSchema(), { type: 'number' })
 
   const x: typeof numberSchema.type = 5
@@ -20,7 +20,7 @@ test('Number type schema', (t) => {
 })
 
 test('Integer type schema', (t) => {
-  const integerSchema = s.Integer()
+  const integerSchema = s.integer()
   t.deepEquals(integerSchema.getSchema(), { type: 'integer' })
 
   const x: typeof integerSchema.type = 5
@@ -29,7 +29,7 @@ test('Integer type schema', (t) => {
 })
 
 test('String type schema', (t) => {
-  const stringSchema = s.String()
+  const stringSchema = s.string()
   t.deepEquals(stringSchema.getSchema(), { type: 'string' })
 
   const x: typeof stringSchema.type = 'hello world'
@@ -38,7 +38,7 @@ test('String type schema', (t) => {
 })
 
 test('Boolean type schema', (t) => {
-  const booleanSchema = s.Boolean()
+  const booleanSchema = s.boolean()
   t.deepEquals(booleanSchema.getSchema(), { type: 'boolean' })
 
   const x: typeof booleanSchema.type = false
@@ -47,13 +47,13 @@ test('Boolean type schema', (t) => {
 })
 
 test('Array type schema', (t) => {
-  const arraySchema = s.Array()
+  const arraySchema = s.array()
   t.deepEquals(arraySchema.getSchema(), { type: 'array' })
 
   const x: typeof arraySchema.type = []
 
-  const numberArraySchema = s.Array({
-    items: s.Number(),
+  const numberArraySchema = s.array({
+    items: s.number(),
   })
   t.deepEquals(numberArraySchema.getSchema(), {
     items: { type: 'number' },
@@ -66,8 +66,8 @@ test('Array type schema', (t) => {
 })
 
 test('Tuple array type schema', (t) => {
-  const singleValueTupleSchema = s.Tuple({
-    items: [s.Integer()],
+  const singleValueTupleSchema = s.tuple({
+    items: [s.integer()],
   })
   t.deepEquals(singleValueTupleSchema.getSchema(), {
     items: [{ type: 'integer' }],
@@ -76,8 +76,8 @@ test('Tuple array type schema', (t) => {
 
   const x: typeof singleValueTupleSchema.type = [1]
 
-  const numberStringTupleSchema = s.Tuple({
-    items: [s.Number(), s.String()],
+  const numberStringTupleSchema = s.tuple({
+    items: [s.number(), s.string()],
   })
   t.deepEquals(numberStringTupleSchema.getSchema(), {
     items: [{ type: 'number' }, { type: 'string' }],
@@ -90,7 +90,7 @@ test('Tuple array type schema', (t) => {
 })
 
 test('Object type schema', (t) => {
-  const objectSchema = s.Obj({
+  const objectSchema = s.object({
     properties: {},
     required: [],
   })
@@ -102,9 +102,9 @@ test('Object type schema', (t) => {
 
   const x: typeof objectSchema.type = {}
 
-  const partialObjectSchema = s.Obj({
+  const partialObjectSchema = s.object({
     properties: {
-      index: s.Integer(),
+      index: s.integer(),
     },
     required: [],
   })
@@ -122,10 +122,10 @@ test('Object type schema', (t) => {
   const y1: typeof partialObjectSchema.type = { index: 1 }
   const y2: typeof partialObjectSchema.type = {}
 
-  const complexObjectSchema = s.Obj({
+  const complexObjectSchema = s.object({
     properties: {
-      req: s.String(),
-      opt: s.Tuple({ items: [s.Integer()] }),
+      req: s.string(),
+      opt: s.tuple({ items: [s.integer()] }),
     },
     required: ['req'],
   })

@@ -29,7 +29,7 @@ export interface NullSchema extends JSONSchema {
   type: 'null'
 }
 
-export const Null = defineType<never, null>('null', null)
+const Null = defineType<never, null>('null', null)
 
 /***********
  * Numbers *
@@ -48,13 +48,13 @@ export interface NumberSchema extends JSONSchema, NumberSchemaDefinition {
 }
 
 // tslint:disable-next-line:variable-name
-export const Number = defineType<NumberSchemaDefinition, number>('number', 0)
+const Number = defineType<NumberSchemaDefinition, number>('number', 0)
 
 export interface IntegerSchema extends JSONSchema, NumberSchemaDefinition {
   type: 'integer'
 }
 
-export const Integer = defineType<NumberSchemaDefinition, number>('integer', 0)
+const Integer = defineType<NumberSchemaDefinition, number>('integer', 0)
 
 /**********
  * String *
@@ -82,7 +82,7 @@ export interface StringSchema extends JSONSchema, StringSchemaDefinition {
 }
 
 // tslint:disable-next-line:variable-name
-export const String = defineType<StringSchemaDefinition, string>('string', '')
+const String = defineType<StringSchemaDefinition, string>('string', '')
 
 /***********
  * Boolean *
@@ -93,7 +93,7 @@ export interface BooleanSchema extends JSONSchema {
 }
 
 // tslint:disable-next-line:variable-name
-export const Boolean = defineType<never, boolean>('boolean', true)
+const Boolean = defineType<never, boolean>('boolean', true)
 
 /**********
  * Arrays *
@@ -110,7 +110,7 @@ export interface ListSchemaDefinition<T> extends BaseArrayDefinition {
   contains?: TypedSchema<T>
 }
 
-export function Array<T>(
+function Array<T>(
   schema: ListSchemaDefinition<T> = {}
 ): TypedSchema<T[]> {
   return {
@@ -152,17 +152,17 @@ export interface TupleAnySchemaDefinition extends BaseArrayDefinition {
   items: TypedSchema<any>[]
 }
 
-export function Tuple<T1>(schema: Tuple1SchemaDefinition<T1>): TypedSchema<[T1]>
-export function Tuple<T1, T2>(
+function Tuple<T1>(schema: Tuple1SchemaDefinition<T1>): TypedSchema<[T1]>
+function Tuple<T1, T2>(
   schema: Tuple2SchemaDefinition<T1, T2>
 ): TypedSchema<[T1, T2]>
-export function Tuple<T1, T2, T3>(
+function Tuple<T1, T2, T3>(
   schema: Tuple3SchemaDefinition<T1, T2, T3>
 ): TypedSchema<[T1, T2, T3]>
-export function Tuple<T1, T2, T3, T4>(
+function Tuple<T1, T2, T3, T4>(
   schema: Tuple4SchemaDefinition<T1, T2, T3, T4>
 ): TypedSchema<[T1, T2, T3, T4]>
-export function Tuple(schema: TupleAnySchemaDefinition): TypedSchema<any[]> {
+function Tuple(schema: TupleAnySchemaDefinition): TypedSchema<any[]> {
   return {
     getSchema: () =>
       Object.assign({}, schema, {
@@ -232,16 +232,16 @@ export interface ObjectDefinition5<
   required: [R1, R2, R3, R4, R5]
 }
 
-export function Obj<T>(
+function Obj<T>(
   schema: PartialObjectDefinition<T>
 ): TypedSchema<Partial<T>>
-export function Obj<T, R1 extends keyof T>(
+function Obj<T, R1 extends keyof T>(
   schema: ObjectDefinition1<T, R1>
 ): TypedSchema<Partial<T> & { [key in R1]: T[key] }>
-export function Obj<T, R1 extends keyof T, R2 extends keyof T>(
+function Obj<T, R1 extends keyof T, R2 extends keyof T>(
   schema: ObjectDefinition2<T, R1, R2>
 ): TypedSchema<Partial<T> & { [key in R1 | R2]: T[key] }>
-export function Obj<
+function Obj<
   T,
   R1 extends keyof T,
   R2 extends keyof T,
@@ -249,7 +249,7 @@ export function Obj<
 >(
   schema: ObjectDefinition3<T, R1, R2, R3>
 ): TypedSchema<Partial<T> & { [key in R1 | R2 | R3]: T[key] }>
-export function Obj<
+function Obj<
   T,
   R1 extends keyof T,
   R2 extends keyof T,
@@ -258,7 +258,7 @@ export function Obj<
 >(
   schema: ObjectDefinition4<T, R1, R2, R3, R4>
 ): TypedSchema<Partial<T> & { [key in R1 | R2 | R3 | R4]: T[key] }>
-export function Obj<
+function Obj<
   T,
   R1 extends keyof T,
   R2 extends keyof T,
@@ -268,7 +268,7 @@ export function Obj<
 >(
   schema: ObjectDefinition5<T, R1, R2, R3, R4, R5>
 ): TypedSchema<Partial<T> & { [key in R1 | R2 | R3 | R4 | R5]: T[key] }>
-export function Obj<T>(schema: ObjectDefinition<T>): TypedSchema<T> {
+function Obj<T>(schema: ObjectDefinition<T>): TypedSchema<T> {
   return {
     getSchema: () =>
       schema.properties
@@ -289,4 +289,15 @@ export function Obj<T>(schema: ObjectDefinition<T>): TypedSchema<T> {
     // tslint:disable-next-line:no-object-literal-type-assertion
     type: {} as T,
   }
+}
+
+export {
+  Null as null,
+  Number as number,
+  Integer as integer,
+  String as string,
+  Boolean as boolean,
+  Array as array,
+  Tuple as tuple,
+  Obj as object
 }
