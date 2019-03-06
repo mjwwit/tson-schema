@@ -13,7 +13,8 @@
     "postlint": "yarn audit",
     "dev": "nodemon -e ts --watch src --watch test --exec 'ts-node -P test/tsconfig.json $(yarn bin)/tape test/**/*.spec.ts | tap-spec'",
     "pretest": "yarn lint && tslint -p test/tsconfig.json",
-    "test": "ts-node -P test/tsconfig.json $(yarn bin)/tape test/**/*.spec.ts | tap-spec"
+    "test": "ts-node -P test/tsconfig.json $(yarn bin)/tape test/**/*.spec.ts | tap-spec",
+    "prepublishOnly": "yarn build"
   },
   "author": "Michael de Wit <mjwwit@gmail.com>",
   "license": "ISC",
