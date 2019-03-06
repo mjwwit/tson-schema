@@ -57,4 +57,14 @@ const objectSchema = t.object({
 
 objectSchema.getSchema() // { type: 'object', properties: { req: { type: 'string' }, opt: { type: 'array', items: [{ type: 'integer' }] } }, required: ['req'] }
 objectSchema.type        // { req: 'string', opt?: [number] }
+
+/**
+ * Enum
+ */
+const enumSchema = t.enum({
+  enum: ['A', 2, 'C', 4]
+})
+
+enumSchema.getSchema() // { enum: ['A', 2, 'C', 4] }
+enumSchema.type        // 'A' | 2 | 'C' | 4
 ```
