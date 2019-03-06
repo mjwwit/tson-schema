@@ -4,12 +4,15 @@ This project aims to bring you an easy way to create json-schemas and TypeScript
 
 __This is a work in progress! Known missing json-schema features include:__
 
-- `enum` functionality
 - `array.additionalItems`
 - `object.additionalProperties`
 - `$ref`
+- JSON-Schema `anyOf`/`oneOf`
 - JSON-Schema conditional schemas (`if`/`else`)
-- Limited TypeScript support for big tuples and objects with lots of required properties
+- Limited TypeScript support for:
+   - big tuples
+   - objects with lots of required properties
+   - big enums
 
 ## Installing
 
