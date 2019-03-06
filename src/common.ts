@@ -4,7 +4,7 @@ export interface TypedSchema<T> {
 }
 
 export interface JSONSchema {
-  type: string
+  type?: string
 }
 
 export interface BaseSchemaDefinition {
@@ -41,7 +41,7 @@ export function defineType<
   return (schema: any = {}) => {
     return {
       getSchema: () => Object.assign({}, schema, { type }),
-      type: value,
+      type: value as ValueType,
     }
   }
 }

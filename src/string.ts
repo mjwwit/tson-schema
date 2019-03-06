@@ -1,4 +1,4 @@
-import { BaseSchemaDefinition, defineType, JSONSchema } from './common'
+import { BaseSchemaDefinition, defineType, TypedSchema } from './common'
 
 export type JSONSchemaStringFormat =
   | 'date-time'
