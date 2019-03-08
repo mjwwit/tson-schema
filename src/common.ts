@@ -3,9 +3,7 @@ export interface TypedSchema<T> {
   getSchema(): JSONSchema
 }
 
-export interface JSONSchema {
-  type?: string
-}
+export type JSONSchema = boolean | number | object | string
 
 export interface BaseSchemaDefinition {
   /**

@@ -19,3 +19,12 @@ test('Enum type schema', (t) => {
 
   t.end()
 })
+
+test('Const type schema', (t) => {
+  const constSchema = s.const('A')
+  t.deepEquals(constSchema.getSchema(), { const: 'A' })
+
+  const x: typeof constSchema.type = 'A'
+
+  t.end()
+})
