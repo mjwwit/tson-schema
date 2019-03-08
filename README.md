@@ -7,7 +7,6 @@ __This is a work in progress! Known missing json-schema features include:__
 - `array.additionalItems`
 - `object.additionalProperties`
 - `$ref`
-- JSON-Schema `anyOf`/`oneOf`
 - JSON-Schema conditional schemas (`if`/`else`)
 - Limited TypeScript support for:
    - big tuples
@@ -64,10 +63,19 @@ objectSchema.type        // { req: 'string', opt?: [number] }
 /**
  * Enum
  */
-const enumSchema = t.enum({
-  enum: ['A', 2, 'C', 4]
-})
+const enumSchema = t.enum(['A', 2, 'C', 4])
 
 enumSchema.getSchema() // { enum: ['A', 2, 'C', 4] }
 enumSchema.type        // 'A' | 2 | 'C' | 4
+
+/**
+ * anyOf
+ */
+const anyOfSchema = t.anyOf([
+  s.const('A'),
+  s.integer()
+])
+
+enumSchema.getSchema() // { anyOf: [{ const: 'A' }, { type: 'integer' }] }
+enumSchema.type        // 'A' | number
 ```
