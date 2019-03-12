@@ -3,7 +3,7 @@ export interface TypedSchema<T> {
   getSchema(): JSONSchema
 }
 
-export type JSONSchema = boolean | number | object | string
+export type JSONSchema = object
 
 export interface BaseSchemaDefinition {
   /**
