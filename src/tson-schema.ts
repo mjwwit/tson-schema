@@ -9,3 +9,6 @@ export * from './any-of'
 export * from './all-of'
 export * from './one-of'
 export * from './any'
+
+import { TypedSchema } from './common'
+export { TypedSchema }
