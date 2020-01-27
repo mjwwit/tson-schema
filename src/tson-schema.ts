@@ -10,5 +10,5 @@ export * from './all-of'
 export * from './one-of'
 export * from './any'
 
-import { TypedSchema } from './common'
-export { TypedSchema }
+import { TypedSchema, TypeOf } from './common'
+export { TypedSchema, TypeOf }

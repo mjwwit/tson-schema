@@ -5,6 +5,14 @@ export interface TypedSchema<T> {
 
 export type JSONSchema = object
 
+export type UnwrapTypedSchema<Schema> = Schema extends TypedSchema<
+  infer InnerType
+>
+  ? InnerType
+  : never
+
+export type TypeOf<Schema extends TypedSchema<any>> = Schema['type']
+
 export interface BaseSchemaDefinition {
   /**
    * Schema title
