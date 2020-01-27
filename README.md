@@ -9,9 +9,8 @@ __This is a work in progress! Known missing json-schema features include:__
 - `$ref`
 - JSON-Schema conditional schemas (`if`/`else`)
 - Limited TypeScript support for:
-   - big tuples
-   - objects with lots of required properties
-   - big enums
+   - big enum schemas
+   - big allOf schemas
 
 ## Installing
 

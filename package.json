@@ -1,6 +1,6 @@
 {
   "name": "tson-schema",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A TypeScript API to create JSON-Schemas and TypeScript types",
   "files": [
     "dist"
@@ -21,15 +21,15 @@
   "dependencies": {},
   "devDependencies": {
     "@types/tape": "^4.2.33",
-    "ajv": "^6.10.2",
-    "nodemon": "^1.19.4",
-    "prettier": "^1.18.2",
+    "ajv": "^6.11.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
     "tap-spec": "^5.0.0",
-    "tape": "^4.11.0",
-    "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
+    "tape": "^4.13.0",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.6.4"
+    "tslint-plugin-prettier": "^2.1.0",
+    "typescript": "^3.7.5"
   }
 }
