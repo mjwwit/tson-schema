@@ -43,4 +43,35 @@ function objectType<
   }
 }
 
-export { objectType as object }
+interface RecordSchemaDefinition<T> extends BaseSchemaDefinition {
+  additionalProperties: TypedSchema<T>
+}
+
+interface AnyRecordSchemaDefinition extends BaseSchemaDefinition {
+  additionalProperties: true
+}
+
+function recordType(
+  schema: AnyRecordSchemaDefinition
+): TypedSchema<Record<string, any>>
+function recordType<T>(
+  schema: RecordSchemaDefinition<T>
+): TypedSchema<Record<string, T>>
+function recordType<T>(
+  schema: RecordSchemaDefinition<T> | AnyRecordSchemaDefinition
+) {
+  return {
+    getSchema: () => ({
+      ...schema,
+      additionalProperties:
+        schema.additionalProperties === true
+          ? true
+          : schema.additionalProperties.getSchema(),
+      type: 'object',
+    }),
+    // tslint:disable-next-line:no-object-literal-type-assertion
+    type: {} as Record<string, any>,
+  }
+}
+
+export { objectType as object, recordType as record }

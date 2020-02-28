@@ -90,3 +90,44 @@ test('Object type schema', (t) => {
 
   t.end()
 })
+
+test('Object type schema (record)', (t) => {
+  const recordSchema = s.record({ additionalProperties: s.string() })
+
+  t.deepEquals(
+    recordSchema.getSchema(),
+    {
+      type: 'object',
+      additionalProperties: { type: 'string' },
+    },
+    'matches expected schema'
+  )
+
+  t.doesNotThrow(() => {
+    ajv.compile(recordSchema.getSchema())
+  }, 'is a valid schema')
+
+  const x1: typeof recordSchema.type = {}
+  const x2: typeof recordSchema.type = { key: 'value' }
+
+  const anyRecordSchema = s.record({ additionalProperties: true })
+
+  t.deepEquals(
+    anyRecordSchema.getSchema(),
+    {
+      type: 'object',
+      additionalProperties: true,
+    },
+    'matches expected schema'
+  )
+
+  t.doesNotThrow(() => {
+    ajv.compile(anyRecordSchema.getSchema())
+  }, 'is a valid schema')
+
+  const y1: typeof anyRecordSchema.type = {}
+  const y2: typeof anyRecordSchema.type = { key: 'value' }
+  const y3: typeof anyRecordSchema.type = { key: 1234 }
+
+  t.end()
+})
